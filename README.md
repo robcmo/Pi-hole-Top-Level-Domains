@@ -51,7 +51,18 @@ On Pi-hole web-interface, click Blacklist, type `cn` for Domain and `China` for 
 ### Shell Option
 
 ```bash
+# Regex includes domain.cn
 pihole --regex '(\.|^)cn$'
+```
+
+## Block Corporate Foreign Servers
+
+Not counting their ".com"s, Amazon was contacting 17 international servers and Google 27 countries. One can only guess why, but blocking does not appear to break functionality.
+
+```bash
+# Regex includes google.ae, google.co.za, google.com.ua, but not google.com
+pihole --regex 'amazon[\.a-z]*\.[a-z][a-z]$'
+pihole --regex 'google[\.a-z]*\.[a-z][a-z]$'
 ```
 
 ## References
