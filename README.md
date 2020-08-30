@@ -27,17 +27,17 @@ zcat /var/log/pihole.log.2.gz | cut -d ' ' -f 6 | sort | uniq > domains.txt
 
 ## TLDs
 
+This could have been combined to one step without using a file, but this allows for easy queries from the results. Look through your TLD list and drilldown with grep.
+
 ```bash
-# Truncate each line prior to last `.`, alpha sort and remove duplicates.
+# List all TLDs.
 cat domains.txt | awk -F'.' '{print $(NF)}' | sort | uniq
-```
 
-This could have been combined to one step without using a file, but this allows for easy queries from the results. Look through your TLD list and drilldown to just those domains as follows.
-
-```bash
-# Examples: List all fully-qualified domains registered to China and Russia
+# List all fully-qualified domains registered to China.
 grep 'cn$' domains.txt
-grep 'ru$' domains.txt
+
+# List all fully-qualified domains with two-letter TLDs.
+grep '\.[a-z][a-z]$' domains.txt
 ```
 
 ## Block TLD
