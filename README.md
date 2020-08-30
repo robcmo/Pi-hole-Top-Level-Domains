@@ -44,11 +44,11 @@ grep 'ru$' domains.txt
 
 Example: Block all Chinese registered domains.
 
-### Option 1
+### Web Option
 
 On Pi-hole web-interface, click Blacklist, type `cn` for Domain and `China` for Comment. Click `Add domain as wildcard` and `Add to Blacklist`.
 
-### Option 2
+### Shell Option
 
 ```bash
 pihole --regex '(\.|^)cn$'
